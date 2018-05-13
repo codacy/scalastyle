@@ -75,7 +75,7 @@ class TextOutput[T <: FileSpec](config: Config, verbose: Boolean = false, quiet:
     case StartFile(file) => if (verbose) println("start file " + file)
     case EndFile(file) => if (verbose) println("end file " + file)
     case StyleError(file, clazz, key, level, args, line, column, customMessage) => if (!quiet || verbose) {
-      println(messageHelper.text(level.name) + print("file", file.name) +
+      println(messageHelper.text(level.name) + print("file", file.name) + print("id", clazz.getName) +
         print("message", Output.findMessage(messageHelper, key, args, customMessage)) +
         print("line", line) + print("column", column))
     }
